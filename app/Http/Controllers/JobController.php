@@ -66,6 +66,11 @@ class JobController extends Controller
 	{
 		return view('jobs.show',compact('jobs'));
 	}
+
+	public function displays($id){
+		 $jobs = DB::table('job')->where('id', '=', $id)->get();
+		 return view('jobs.show',compact('jobs'));
+	}
 	/**
 	 * Show the form for editing the specified resource.
 	 *

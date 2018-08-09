@@ -30,7 +30,7 @@
 		<td>{{ $job->description}}</td>
 		<td>{{ $job->status}}</td>
 		<td>
-			<a class="btn btn-info" href="{{ route('jobs.show',$job->id) }}">Show</a>
+			<a class="btn btn-info" href="{{ route('jobs.displays',$job->id) }}">Show</a>
 		  <!--  <a class="btn btn-primary" href="{{ route('jobs.edit',$job->id) }}">Edit</a> -->
 		  <form action="{{  route('jobs.edit',$job->id) }}" method="GET">
 	@method('GET')

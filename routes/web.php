@@ -15,10 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('department','DepartmentController');
-Route::resource('jobs','JobController');
+
+
 
 
 Route::resource('user','UserController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('jobs','JobController');
+Route::get('jobs/displays/{id}', 'JobController@displays')->name('jobs.displays');

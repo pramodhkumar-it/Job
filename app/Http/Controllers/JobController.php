@@ -22,7 +22,7 @@ class JobController extends Controller
 	{
 		//  $jobs = Jobs::latest()->paginate(10);
 
-        $jobs = DB::table('job')->join('department', 'department.id', '=', 'job.dep_id')->select('job.*')->paginate(15);
+		$jobs = DB::table('job')->join('department', 'department.id', '=', 'job.dep_id')->select('job.*')->paginate(15);
 
 		return view('jobs.index',compact('jobs'))
 			->with('i', (request()->input('page', 1) - 1) * 5);
@@ -50,7 +50,7 @@ class JobController extends Controller
 			'name' => 'required',
 			'description' => 'required',
 			'dep_id' => 'required',
-            'status'=> 'required',
+			'status'=> 'required',
 		]);
 		Jobs::create($request->all());
 		return redirect()->route('jobs.index')
@@ -82,6 +82,13 @@ class JobController extends Controller
 		$selectedJobs = Department::all();
 		return view('jobs.edit',compact('jobs','selectedJobs'));
 	}
+	public function jobedit($id)
+	{
+		//$jobs = DB::table('job')->where('id', '=', $id)->get();
+		$jobs = Jobs::find($id);
+		$selectedJobs = Department::all();
+		return view('jobs.edit',compact('jobs','selectedJobs'));
+	}
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -94,8 +101,8 @@ class JobController extends Controller
 		request()->validate([
 			'name' => 'required',
 			'description' => 'required',
-            'dep_id' => 'required',
-            'status'=> 'required',
+			'dep_id' => 'required',
+			'status'=> 'required',
 		]);
 		$jobs->update($request->all());
 		return redirect()->route('jobs.index')
@@ -117,10 +124,10 @@ class JobController extends Controller
 
 	public function applyjobs(){
 
-        $jobs = DB::table('jobs')->where('jobs.status','==','open')->join('department', 'department.id', '=', 'jobs.dep_id')->select('jobs.*')->paginate(15);
+		$jobs = DB::table('jobs')->where('jobs.status','==','open')->join('department', 'department.id', '=', 'jobs.dep_id')->select('jobs.*')->paginate(15);
 
-        return view('jobs.applyjob',compact('jobs'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+		return view('jobs.applyjob',compact('jobs'))
+			->with('i', (request()->input('page', 1) - 1) * 5);
+	}
 
 }

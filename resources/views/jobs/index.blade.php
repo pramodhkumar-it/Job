@@ -31,12 +31,12 @@
 		<td>{{ $job->status}}</td>
 		<td>
 			<a class="btn btn-info" href="{{ route('jobs.displays',$job->id) }}">Show</a>
-		  <!--  <a class="btn btn-primary" href="{{ route('jobs.edit',$job->id) }}">Edit</a> -->
-		  <form action="{{  route('jobs.edit',$job->id) }}" method="GET">
+		  <a class="btn btn-primary" href="{{ route('jobs.jobedit',$job->id) }}">Edit</a> 
+		 <!--   <form action="{{  route('jobs.edit',$job->id) }}" method="GET">
 	@method('GET')
 	@csrf
 	<button>EDIT</button>
-</form>
+</form>-->
 		<td align="left">
 <form action="{{ route('jobs.destroy', $job->id) }}" method="POST">
 	@method('DELETE')

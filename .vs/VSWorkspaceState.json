@@ -7,9 +7,10 @@
     "\\database",
     "\\resources",
     "\\resources\\views",
+    "\\resources\\views\\department",
     "\\resources\\views\\jobs",
-    "\\routes"
+    "\\storage"
   ],
-  "SelectedNode": "\\resources\\views\\jobs\\index.blade.php",
+  "SelectedNode": "\\resources\\views\\jobs\\show.blade.php",
   "PreviewInSolutionExplorer": false
 }
